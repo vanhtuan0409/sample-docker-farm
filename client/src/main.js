@@ -1,9 +1,8 @@
-const config = require("../config.js");
-const axios = require("axios");
+ const axios = require("axios");
 
-axios.get("http://localhost:8080/data")
+axios.get("/api/data")
     .then(function (response) {
-        const json = JSON.parse(response.data);
-        const htmlString = json.map(item => "<li>"+item+"</li>").join("");
+        const data = JSON.parse(response.data);
+        const htmlString = data.map(item => "<li>"+item+"</li>").join("");
         document.getElementById("app").innerHTML = htmlString;
     })
