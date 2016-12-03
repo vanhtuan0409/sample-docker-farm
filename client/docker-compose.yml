@@ -1,0 +1,15 @@
+version: "2"
+
+services:
+  web:
+    build:
+      context: .
+      args:
+        port: 5000
+    image: vanhtuan0409/web-client
+    environment:
+      NODE_ENV: development
+    volumes:
+      - ./static:/usr/app/static:rw
+    ports:
+      - "3000:5000"
