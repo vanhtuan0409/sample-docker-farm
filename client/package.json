@@ -1,0 +1,22 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node server.js",
+    "prod": "cross-env NODE_ENV=production npm start",
+    "dev": "cross-env NODE_ENV=development npm start",
+    "api": "node mock_api/api.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "http-proxy-middleware": "^0.17.2",
+    "morgan": "^1.7.0"
+  },
+  "devDependencies": {
+    "cross-env": "^3.1.3"
+  }
+}
