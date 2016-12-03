@@ -1,5 +1,5 @@
 FROM node:6.9
-ARG port=3000
+ARG port=8080
 
 MAINTAINER tuanvuong <vanhtuan0409@gmail.com>
 
@@ -15,7 +15,6 @@ WORKDIR $APP
 ADD package.json $APP
 RUN npm install
 ADD . $APP
-RUN npm run build
 
 EXPOSE $PORT
 CMD npm run start

@@ -1,0 +1,30 @@
+version: "2"
+
+services:
+  client:
+    build:
+      context: ./client
+      args:
+        port: 3001
+    image: vanhtuan0409/web-client
+    environment:
+      NODE_ENV: development
+    volumes:
+      - ./client/static:/usr/app/static:rw
+    ports:
+      - "3001:3001"
+    links:
+      - server
+  
+  server:
+    build:
+      context: ./server
+      args:
+        port: 8081
+    image: vanhtuan0409/web-server
+    environment:
+      NODE_ENV: development
+    ports:
+      - "8081:8081"
+
+      

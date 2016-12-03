@@ -1,0 +1,13 @@
+version: "2"
+
+services:
+  server:
+    build:
+      context: .
+      args:
+        port: 8080
+    image: vanhtuan0409/web-server
+    environment:
+      NODE_ENV: development
+    ports:
+      - "8080:8080"
