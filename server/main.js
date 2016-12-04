@@ -18,7 +18,8 @@ if (process.env.NODE_ENV !== "production") {
 app.get("/data", (req, res) => {
     const filePath = path.join(__dirname, "data.json");
     const data = fs.readFileSync(filePath, "utf8");
-    res.json(data);
+    const jsonObj = JSON.parse(data);
+    res.json(jsonObj);
 });
 const port = process.env.PORT || 8080;
 app.listen(port, (err) => {
