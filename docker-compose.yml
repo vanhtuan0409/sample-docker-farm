@@ -10,11 +10,9 @@ services:
     environment:
       NODE_ENV: development
     volumes:
-      - ./client/static:/usr/app/static:rw
+      - ./client/src:/usr/app/src:rw
     ports:
       - "3001:3001"
-    links:
-      - server
   
   server:
     build:
@@ -27,4 +25,13 @@ services:
     ports:
       - "8081:8081"
 
+  gateway:
+    build:
+      context: ./gateway
+    image: vanhtuan0409/gateway
+    ports:
+      - "80:80"
+    links:
+      - server:webapi
+      - client:webclient
       

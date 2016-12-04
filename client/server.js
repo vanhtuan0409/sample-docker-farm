@@ -3,19 +3,9 @@
 const path = require("path");
 const express = require("express");
 const morgan = require("morgan");
-const proxy = require('http-proxy-middleware');
-const config = require('./config.js');
 
 const app = express();
 app.use(morgan("tiny"));
-app.use('/api', proxy({
-    target: config.API_URL,
-    changeOrigin: true,
-    ws: true,
-    pathRewrite: {
-        '^/api': '' 
-    },
-}))
 
 if (process.env.NODE_ENV !== "production") {
     const webpack = require("webpack");
