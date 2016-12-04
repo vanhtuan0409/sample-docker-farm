@@ -1,8 +1,7 @@
-FROM nginx
+FROM haproxy
 
 MAINTAINER tuanvuong <vanhtuan0409@gmail.com>
 
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY haproxy.cfg /usr/local/etc/haproxy/haproxy.cfg
 
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 80 443
