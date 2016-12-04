@@ -5,33 +5,33 @@ services:
     build:
       context: ./client
       args:
-        port: 3001
+        port: ${CLIENT_PORT}
     image: vanhtuan0409/web-client:${TAG}
     environment:
-      NODE_ENV: development
+      NODE_ENV: ${NODE_ENV}
     volumes:
       - ./client/src:/usr/app/src:rw
     ports:
-      - "3001:3001"
+      - "${CLIENT_PORT}:${CLIENT_PORT}"
   
   server:
     build:
       context: ./server
       args:
-        port: 8081
+        port: ${API_PORT}
     image: vanhtuan0409/web-server:${TAG}
     environment:
-      NODE_ENV: development
+      NODE_ENV: ${NODE_ENV}
     ports:
-      - "8081:8081"
+      - "${API_PORT}:${API_PORT}"
 
   gateway:
     build:
       context: ./gateway
     image: vanhtuan0409/gateway:${TAG}
     environment:
-      CLIENT_PORT: 3001
-      API_PORT: 8081
+      CLIENT_PORT: ${CLIENT_PORT}
+      API_PORT: ${API_PORT}
     ports:
       - "80:80"
     links:
