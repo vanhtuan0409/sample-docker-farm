@@ -6,7 +6,7 @@ services:
       context: ./client
       args:
         port: 3001
-    image: vanhtuan0409/web-client
+    image: vanhtuan0409/web-client:${TAG}
     environment:
       NODE_ENV: development
     volumes:
@@ -19,7 +19,7 @@ services:
       context: ./server
       args:
         port: 8081
-    image: vanhtuan0409/web-server
+    image: vanhtuan0409/web-server:${TAG}
     environment:
       NODE_ENV: development
     ports:
@@ -28,7 +28,10 @@ services:
   gateway:
     build:
       context: ./gateway
-    image: vanhtuan0409/gateway
+    image: vanhtuan0409/gateway:${TAG}
+    environment:
+      CLIENT_PORT: 3001
+      API_PORT: 8081
     ports:
       - "80:80"
     links:
